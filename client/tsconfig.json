@@ -23,5 +23,12 @@
     "forkChecker": true
   },
   "compileOnSave": false,
-  "buildOnSave": false
+  "buildOnSave": false,
+  "files": [
+    "./src/app/app.component.ts",
+    "./src/app/app.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
 }
