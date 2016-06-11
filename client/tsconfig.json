@@ -26,7 +26,10 @@
   "buildOnSave": false,
   "files": [
     "./src/app/app.component.ts",
-    "./src/app/app.ts"
+    "./src/app/app.ts",
+    "./src/app/components/body/body.component.ts",
+    "./src/app/components/create-hero/create.hero.component.ts",
+    "./src/app/components/hero-list/hero.list.component.ts"
   ],
   "atom": {
     "rewriteTsconfig": true
