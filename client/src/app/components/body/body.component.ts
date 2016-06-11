@@ -6,10 +6,10 @@ import {Component} from '@angular/core';
   selector: 'body-cmp',
   template: `
       <div class="container-fluid">
-        <div class="col-lg-4 jumbotron">
+        <div class="col-lg-6 jumbotron">
           <create-hero></create-hero>
         </div>
-        <div class="col-lg-8 jumbotron">
+        <div class="col-lg-6 jumbotron">
           <hero-list></hero-list>
         </div>
       </div>
