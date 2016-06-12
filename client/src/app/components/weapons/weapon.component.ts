@@ -1,4 +1,5 @@
 import {CreateWeaponComponent} from "./create-weapon/create-weapon.component";
+import {WeaponsList} from './weapons-list/weapon-list.component';
 import {Component} from '@angular/core';
 
 @Component({
@@ -9,11 +10,11 @@ import {Component} from '@angular/core';
     </div>
     <div class="col-lg-6">
       <div class="jumbotron">
-      <hero-list></hero-list>
+      <weapons-list></weapons-list>
     </div>
   </div>
   `,
-  directives: [CreateWeaponComponent]
+  directives: [CreateWeaponComponent, WeaponsList]
 })
 export class WeaponComponent{
 

@@ -1,3 +1,4 @@
+import {WeaponService} from "../../../../services/weapon.service";
 import {Component} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 
@@ -36,11 +37,12 @@ import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 })
 export class WeaponFormComponent{
 
+  static counter: number = 0;
   weaponForm: ControlGroup;
   weaponName: Control;
   weaponType: Control;
 
-  constructor(private _fb: FormBuilder){
+  constructor(private _fb: FormBuilder, private _weaponService: WeaponService){
     this.weaponName = this._fb.control('', Validators.required);
     this.weaponType = this._fb.control('', Validators.required);
     this.weaponForm = this._fb.group({
@@ -50,6 +52,20 @@ export class WeaponFormComponent{
   }
 
   addWeapon(): void {
-      console.log('I am going to add a weapon');
+      let newWeapon = {
+        id: WeaponFormComponent.counter++,
+        weaponName: this.weaponName.value,
+        weaponType: this.weaponType.value
+      }
+
+      this._weaponService.addWeapon(newWeapon);
+      this._resetForm();
+  }
+
+  private _resetForm(){
+    this.weaponName.updateValue('');
+    this.weaponName.setErrors(null);
+    this.weaponType.updateValue('');
+    this.weaponType.setErrors(null);
   }
 }

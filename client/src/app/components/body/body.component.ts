@@ -1,3 +1,4 @@
+import {WeaponService} from "../../services/weapon.service";
 import {WeaponComponent} from "../weapons/weapon.component";
 import {HeroComponent} from "../hero/hero.component";
 import {HeroService} from "../../services/hero.service";
@@ -16,7 +17,7 @@ import {Component} from '@angular/core';
       </div>
   `,
   directives: [HeroComponent, WeaponComponent],
-  providers: [HeroService],
+  providers: [HeroService, WeaponService],
   styles: [`
       .row{
         margin: 20px;

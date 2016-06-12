@@ -72,6 +72,7 @@ export class HeroForm{
         heroSkill: this.heroSkill.value
       }
       this._heroService.addHero(newHero);
+      this._resetForm();
     }
 
     updateHero(): void{
@@ -81,5 +82,12 @@ export class HeroForm{
         heroSkill: this.heroSkill.value
       };
       this._heroService.updateHero(updatedHero);
+    }
+
+    private _resetForm(){
+      this.heroName.updateValue('');
+      this.heroName.setErrors(null);
+      this.heroSkill.updateValue('');
+      this.heroSkill.setErrors(null);
     }
 }
