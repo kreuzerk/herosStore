@@ -18,6 +18,9 @@ import {HeroTitleImage} from './title-image/title.image.component';
       .heroform{
         padding-top: 45px;
       }
+      h3{
+        color: white;
+      }
     `]
 })
 export class CreateHero{

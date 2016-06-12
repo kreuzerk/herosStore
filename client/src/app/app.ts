@@ -10,12 +10,18 @@ import 'rxjs/add/operator/mergeMap';
 // Style Imports
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {provide} from '@angular/core';
+
+//Components
+import {heroes} from './reducers/hero.reducer';
 import {AppComponent} from './app.component';
 import {PLATFORM_DIRECTIVES} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 import {HTTP_PROVIDERS} from "@angular/http";
+import {provideStore} from '@ngrx/store';
+
 
 bootstrap(AppComponent,[
     HTTP_PROVIDERS,
-    provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true})
+    provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true}),
+    provideStore({heroes})
 ]);

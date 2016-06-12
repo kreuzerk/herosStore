@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
   selector: 'body-cmp',
   template: `
       <div class="container-fluid">
-        <div class="col-lg-6 jumbotron">
+        <div class="col-lg-6">
           <create-hero></create-hero>
         </div>
         <div class="col-lg-6 jumbotron">
