@@ -75,6 +75,11 @@ export class HeroForm{
     }
 
     updateHero(): void{
-      console.log('You want to update', this.heroToUpdate);
+      let updatedHero = {
+        id: this.heroToUpdate.id,
+        heroName: this.heroName.value,
+        heroSkill: this.heroSkill.value
+      };
+      this._heroService.updateHero(updatedHero);
     }
 }

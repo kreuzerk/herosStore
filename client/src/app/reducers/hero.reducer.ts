@@ -19,6 +19,10 @@ export const heroes = (state: Hero[] = allTimeHeroes, {type, payload}) => {
       return [...state, payload];
     case 'DELETE_HERO':
       return state.filter(hero => hero.id != payload);
+    case 'UPDATE_HERO':
+      return state.map((hero) => {
+        return hero.id === payload.id ? Object.assign({}, hero, payload) : hero;
+      });
     default:
       return state;
   }
