@@ -8,8 +8,11 @@ export class HeroService{
 
   constructor(private store: Store<HeroStore>){}
 
-  addHero(payload: Hero){
-      this.store.dispatch({type: 'ADD_HERO', payload});
+  addHero(payload: Hero): void{
+    this.store.dispatch({type: 'ADD_HERO', payload});
   }
 
+  deleteHero(payload: number){
+    this.store.dispatch({type: 'DELETE_HERO', payload});
+  }
 }

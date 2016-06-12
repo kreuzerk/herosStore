@@ -23,7 +23,7 @@ import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
           <button type="submit" class="btn btn-danger" [disabled]="!heroForm.valid">Add Hero</button>
     </form>
   `,
-  providers: [FormBuilder, HeroService],
+  providers: [FormBuilder],
   styles: [`
       .errormessage{
         color: red;
@@ -38,6 +38,7 @@ export class HeroForm{
     heroForm: ControlGroup;
     heroName: Control;
     heroSkill: Control;
+    static counter: number = 0;
 
     constructor(private _fb: FormBuilder, private _heroService: HeroService){
       this.heroName = this._fb.control('', Validators.required);
@@ -50,6 +51,7 @@ export class HeroForm{
 
     addHero(): void{
       let newHero = {
+        id: HeroForm.counter++,
         heroName: this.heroName.value,
         heroSkill: this.heroSkill.value
       }
