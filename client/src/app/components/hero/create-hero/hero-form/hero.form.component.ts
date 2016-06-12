@@ -1,7 +1,7 @@
-import {Hero} from "../../../model/hero.model";
-import {HeroStore} from "../../../model/hero.store";
+import {Hero} from "../../../../model/hero.model";
+import {HeroStore} from "../../../../model/hero.store";
 import {Store} from "@ngrx/store";
-import {HeroService} from "../../../services/hero.service";
+import {HeroService} from "../../../../services/hero.service";
 import {Component} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 

@@ -1,4 +1,4 @@
-import {HeroForm} from "../components/create-hero/hero-form/hero.form.component";
+import {HeroForm} from "../components/hero/create-hero/hero-form/hero.form.component";
 import {Hero} from "../model/hero.model";
 
 let createHero = (name: string, skill: string) => ({
