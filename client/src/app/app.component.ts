@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app',
     template: `
-    <div class="jumbotron">
-      <h3>My favorite heros</h3>
-    </div>
+    <nav class="navbar navbar-inverse">
+      <h1 class="navbar-brand">HerosStore</h1>
+    </nav>
     <div class="row">
       <body-cmp></body-cmp>
     </div>
