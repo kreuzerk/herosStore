@@ -6,6 +6,8 @@ export const weapons = (state: Array<Weapon> = [], {type, payload}) => {
     switch(type){
       case WeaponActions.ADD_WEAPON.toString():
         return [...state, payload];
+      case WeaponActions.DELETE_WEAPON.toString():
+        return state.filter(weapon => weapon.id !== payload);
       default:
         return state;
     }

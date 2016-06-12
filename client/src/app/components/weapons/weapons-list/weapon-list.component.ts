@@ -1,3 +1,4 @@
+import {WeaponService} from "../../../services/weapon.service";
 import {Weapon} from "../../../model/weapon";
 import {Observable} from "rxjs/Observable";
 import {HeroStore} from "../../../model/hero.store";
@@ -11,10 +12,12 @@ import {Component} from '@angular/core';
       <tr>
         <th>Weapon Name</th>
         <th>Weapon Type</th>
+        <th></th>
       </tr>
       <tr *ngFor="let weapon of weapons | async">
         <td>{{ weapon.weaponName }}</td>
         <td>{{ weapon.weaponType }}</td>
+        <td><span class="glyphicon glyphicon-trash" (click)="deleteWeapon(weapon.id)" aria-hidden="true"></span></td>
       </tr>
     </table>
   `
@@ -23,8 +26,12 @@ export class WeaponsList{
 
   weapons: Observable<Array<Weapon>>;
 
-  constructor(private _store: Store<HeroStore>){
+  constructor(private _store: Store<HeroStore>, private _weaponService: WeaponService){
     this.weapons = this._store.select('weapons');
+  }
+
+  deleteWeapon(id: number){
+    this._weaponService.deleteWeapon(id);
   }
 
 }

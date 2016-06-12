@@ -12,4 +12,8 @@ export class WeaponService{
   addWeapon(payload: Weapon){
     this._store.dispatch({type: WeaponActions.ADD_WEAPON.toString(), payload});
   }
+
+  deleteWeapon(payload: number){
+    this._store.dispatch({type: WeaponActions.DELETE_WEAPON.toString(), payload});
+  }
 }

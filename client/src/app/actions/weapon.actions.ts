@@ -1,3 +1,4 @@
 export enum WeaponActions {
-  ADD_WEAPON
+  ADD_WEAPON,
+  DELETE_WEAPON
 }
