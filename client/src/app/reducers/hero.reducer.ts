@@ -1,6 +1,19 @@
+import {HeroForm} from "../components/create-hero/hero-form/hero.form.component";
 import {Hero} from "../model/hero.model";
 
-export const heroes = (state: Hero[] = [], {type, payload}) => {
+let createHero = (name: string, skill: string) => ({
+  id: HeroForm.counter++,
+  heroName: name,
+  heroSkill: skill
+})
+
+const allTimeHeroes = [
+  createHero('Batman', 'Driving'),
+  createHero('SpiderMan', 'Jumping'),
+  createHero('Flash', 'Running')
+]
+
+export const heroes = (state: Hero[] = allTimeHeroes, {type, payload}) => {
   switch (type) {
     case 'ADD_HERO':
       return [...state, payload];

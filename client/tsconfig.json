@@ -35,6 +35,7 @@
     "./src/app/model/hero.model.ts",
     "./src/app/model/hero.store.ts",
     "./src/app/reducers/hero.reducer.ts",
+    "./src/app/reducers/selectedhero.reducer.ts",
     "./src/app/services/hero.service.ts"
   ],
   "atom": {

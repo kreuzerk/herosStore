@@ -14,7 +14,7 @@ import {HeroStore} from "../../model/hero.store";
           <th>Heros skill</th>
           <th></th>
         </tr>
-        <tr *ngFor="let hero of heroes | async">
+        <tr *ngFor="let hero of heroes | async" (click)="heroSelected(hero)">
           <td>{{ hero.heroName }}</td>
           <td>{{ hero.heroSkill }}</td>
           <td><span class="glyphicon glyphicon-trash" (click)="deleteHero(hero.id)" aria-hidden="true"></span></td>
@@ -31,5 +31,9 @@ export class HeroList{
 
     deleteHero(id: number): void{
       this._heroService.deleteHero(id);
+    }
+
+    heroSelected(hero: Hero): void{
+      this._heroService.heroSelected(hero);
     }
 }
