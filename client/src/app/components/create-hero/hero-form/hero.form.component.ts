@@ -1,3 +1,6 @@
+import {Hero} from "../../../model/hero.model";
+import {HeroStore} from "../../../model/hero.store";
+import {Store} from "@ngrx/store";
 import {HeroService} from "../../../services/hero.service";
 import {Component} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
@@ -21,6 +24,8 @@ import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
                 </div>
           </div>
           <button type="submit" class="btn btn-danger" [disabled]="!heroForm.valid">Add Hero</button>
+          <button type="button" class="btn btn-danger" [disabled]="!heroForm.valid || !heroToUpdate"
+          (click)="updateHero()">Update Hero</button>
     </form>
   `,
   providers: [FormBuilder],
@@ -39,14 +44,25 @@ export class HeroForm{
     heroName: Control;
     heroSkill: Control;
     static counter: number = 0;
+    heroToUpdate: Hero = undefined;
 
-    constructor(private _fb: FormBuilder, private _heroService: HeroService){
+    constructor(private _fb: FormBuilder, private _heroService: HeroService,
+      private store: Store<HeroStore>){
       this.heroName = this._fb.control('', Validators.required);
       this.heroSkill = this._fb.control('', Validators.required);
       this.heroForm = this._fb.group({
         heroName: this.heroName,
         heroSkill: this.heroSkill
       });
+
+      this.store.select('selectedHero').subscribe((hero: Hero) => {
+        if(hero){
+        this.heroToUpdate = hero;
+        this.heroName.updateValue(this.heroToUpdate.heroName);
+        this.heroSkill.updateValue(this.heroToUpdate.heroSkill);
+        }
+      })
+
     }
 
     addHero(): void{
@@ -56,5 +72,14 @@ export class HeroForm{
         heroSkill: this.heroSkill.value
       }
       this._heroService.addHero(newHero);
+    }
+
+    updateHero(): void{
+      let updatedHero = {
+        id: this.heroToUpdate.id,
+        heroName: this.heroName.value,
+        heroSkill: this.heroSkill.value
+      };
+      this._heroService.updateHero(updatedHero);
     }
 }

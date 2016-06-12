@@ -1,3 +1,4 @@
+import {selectedHero} from "./reducers/selectedhero.reducer";
 // Polyfills
 import 'core-js/es6';
 import 'core-js/es7/reflect';
@@ -23,5 +24,5 @@ import {provideStore} from '@ngrx/store';
 bootstrap(AppComponent,[
     HTTP_PROVIDERS,
     provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true}),
-    provideStore({heroes})
+    provideStore({heroes, selectedHero})
 ]);

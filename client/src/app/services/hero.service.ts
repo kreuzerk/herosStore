@@ -15,4 +15,12 @@ export class HeroService{
   deleteHero(payload: number){
     this.store.dispatch({type: 'DELETE_HERO', payload});
   }
+
+  heroSelected(payload: Hero){
+    this.store.dispatch({type: 'HERO_SELECTED', payload});
+  }
+
+  updateHero(payload: Hero){
+    this.store.dispatch({type: 'UPDATE_HERO', payload});
+  }
 }
