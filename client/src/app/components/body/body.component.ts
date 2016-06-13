@@ -1,3 +1,4 @@
+import {ArmingComponent} from "../arming/arming.component";
 import {WeaponService} from "../../services/weapon.service";
 import {WeaponComponent} from "../weapons/weapon.component";
 import {HeroComponent} from "../hero/hero.component";
@@ -14,9 +15,12 @@ import {Component} from '@angular/core';
         <div class="row">
           <weapon-cmp></weapon-cmp>
         </div>
+        <div class="row">
+          <arming-cmp></arming-cmp>
+        </div>
       </div>
   `,
-  directives: [HeroComponent, WeaponComponent],
+  directives: [HeroComponent, WeaponComponent, ArmingComponent],
   providers: [HeroService, WeaponService],
   styles: [`
       .row{
