@@ -1,0 +1,6 @@
+export enum WeaponActions {
+  ADD_WEAPON,
+  DELETE_WEAPON,
+  WEAPON_SELECTED,
+  UPDATE_WEAPON
+}

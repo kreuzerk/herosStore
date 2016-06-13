@@ -1,4 +1,3 @@
-import {selectedHero} from "./reducers/selectedhero.reducer";
 // Polyfills
 import 'core-js/es6';
 import 'core-js/es7/reflect';
@@ -14,6 +13,9 @@ import {provide} from '@angular/core';
 
 //Components
 import {heroes} from './reducers/hero.reducer';
+import {weapons} from "./reducers/weapons.reducer";
+import {selectedHero} from "./reducers/selectedhero.reducer";
+import {seletedWeapon} from "./reducers/selectedWeapon.reducer";
 import {AppComponent} from './app.component';
 import {PLATFORM_DIRECTIVES} from "@angular/core";
 import {ROUTER_DIRECTIVES} from "@angular/router";
@@ -24,5 +26,5 @@ import {provideStore} from '@ngrx/store';
 bootstrap(AppComponent,[
     HTTP_PROVIDERS,
     provide(PLATFORM_DIRECTIVES, {useValue: [ROUTER_DIRECTIVES], multi: true}),
-    provideStore({heroes, selectedHero})
+    provideStore({heroes, selectedHero, weapons, seletedWeapon})
 ]);
