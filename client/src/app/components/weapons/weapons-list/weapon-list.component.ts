@@ -14,7 +14,7 @@ import {Component} from '@angular/core';
         <th>Weapon Type</th>
         <th></th>
       </tr>
-      <tr *ngFor="let weapon of weapons | async">
+      <tr *ngFor="let weapon of weapons | async" (click)="weaponSelected(weapon)">
         <td>{{ weapon.weaponName }}</td>
         <td>{{ weapon.weaponType }}</td>
         <td><span class="glyphicon glyphicon-trash" (click)="deleteWeapon(weapon.id)" aria-hidden="true"></span></td>
@@ -30,8 +30,12 @@ export class WeaponsList{
     this.weapons = this._store.select('weapons');
   }
 
-  deleteWeapon(id: number){
+  deleteWeapon(id: number): void{
     this._weaponService.deleteWeapon(id);
+  }
+
+  weaponSelected(weapon: Weapon): void{
+    this._weaponService.weaponSelected(weapon);
   }
 
 }

@@ -45,6 +45,7 @@
     "./src/app/model/weapon.ts",
     "./src/app/reducers/hero.reducer.ts",
     "./src/app/reducers/selectedhero.reducer.ts",
+    "./src/app/reducers/selectedWeapon.reducer.ts",
     "./src/app/reducers/weapons.reducer.ts",
     "./src/app/services/hero.service.ts",
     "./src/app/services/weapon.service.ts"

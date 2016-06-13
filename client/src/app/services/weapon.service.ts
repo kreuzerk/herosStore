@@ -9,11 +9,19 @@ export class WeaponService{
 
   constructor(private _store: Store<HeroStore>){}
 
-  addWeapon(payload: Weapon){
+  addWeapon(payload: Weapon): void{
     this._store.dispatch({type: WeaponActions.ADD_WEAPON.toString(), payload});
   }
 
-  deleteWeapon(payload: number){
+  deleteWeapon(payload: number): void{
     this._store.dispatch({type: WeaponActions.DELETE_WEAPON.toString(), payload});
+  }
+
+  weaponSelected(payload: Weapon): void{
+    this._store.dispatch({type: WeaponActions.WEAPON_SELECTED.toString(), payload});
+  }
+
+  updateWeapon(payload: Weapon): void{
+    this._store.dispatch({type: WeaponActions.UPDATE_WEAPON.toString(), payload});
   }
 }

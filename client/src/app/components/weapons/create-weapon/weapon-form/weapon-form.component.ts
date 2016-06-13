@@ -1,3 +1,6 @@
+import {Weapon} from "../../../../model/weapon";
+import {HeroStore} from "../../../../model/hero.store";
+import {Store} from "@ngrx/store";
 import {WeaponService} from "../../../../services/weapon.service";
 import {Component} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
@@ -21,9 +24,8 @@ import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
               </div>
         </div>
         <button type="submit" class="btn btn-danger" [disabled]="!weaponForm.valid">Add a Weapon</button>
-        <!--
-        <button type="button" class="btn btn-danger" [disabled]="!heroForm.valid || !heroToUpdate"
-        (click)="updateHero()">Update Hero</button>-->
+        <button type="button" class="btn btn-danger" [disabled]="!weaponForm.valid || !weaponToUpdate"
+        (click)="updateWeapon()">Update Weapon</button>
   </form>
   `,
   styles: [`
@@ -41,13 +43,23 @@ export class WeaponFormComponent{
   weaponForm: ControlGroup;
   weaponName: Control;
   weaponType: Control;
+  private weaponToUpdate: Weapon;
 
-  constructor(private _fb: FormBuilder, private _weaponService: WeaponService){
+  constructor(private _fb: FormBuilder, private _weaponService: WeaponService,
+    private _store: Store<HeroStore>){
     this.weaponName = this._fb.control('', Validators.required);
     this.weaponType = this._fb.control('', Validators.required);
     this.weaponForm = this._fb.group({
       weaponName: this.weaponName,
       weaponType: this.weaponType
+    })
+
+    this._store.select('seletedWeapon').subscribe((selectedWeapon: Weapon) => {
+      if(selectedWeapon){
+      this.weaponToUpdate = selectedWeapon;
+      this.weaponName.updateValue(this.weaponToUpdate.weaponName);
+      this.weaponType.updateValue(this.weaponToUpdate.weaponType);
+      }
     })
   }
 
@@ -67,5 +79,14 @@ export class WeaponFormComponent{
     this.weaponName.setErrors(null);
     this.weaponType.updateValue('');
     this.weaponType.setErrors(null);
+  }
+
+  updateWeapon(): void{
+    let updatedWeapon = {
+      id: this.weaponToUpdate.id,
+      weaponName: this.weaponName.value,
+      weaponType: this.weaponType.value
+    };
+    this._weaponService.updateWeapon(updatedWeapon);
   }
 }
