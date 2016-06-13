@@ -1,16 +1,17 @@
+import {Actions} from "../../../actions/actions";
 import {HeroStore} from "../../../model/hero.store";
-import {Weapon} from "../../../model/weapon";
+import {Hero} from "../../../model/hero.model";
 import {Store} from "@ngrx/store/store";
 import {Observable} from "rxjs/Observable";
 import {Component, Input} from '@angular/core';
 
 
 @Component({
-  selector: 'weapon-buttons',
+  selector: 'hero-buttons',
   template: `
   <div class="btn-group-vertical" role="group">
-    <button #button *ngFor="let weapon of weapons | async"class="btn btn-default" (click)="buttonClicked(button)">
-      <b>{{ weapon.weaponName }}</b> {{ weapon.weaponType }}
+    <button #button *ngFor="let hero of heroes | async"class="btn btn-default" (click)="buttonClicked(button, hero)">
+      <b>{{ hero.heroName }}</b> {{ hero.heroSkill }}
     </button>
   </div>
   `,
@@ -20,20 +21,22 @@ import {Component, Input} from '@angular/core';
     }
     `]
 })
-export class WeaponButtons{
+export class HeroButtons{
 
   private previousButton: HTMLInputElement;
-  weapons: Observable<Array<Weapon>>;
+  heroes: Observable<Array<Hero>>;
 
   constructor(private _store: Store<HeroStore>){
-    this.weapons = this._store.select('weapons');
+    this.heroes = this._store.select('heroes');
   }
 
-  buttonClicked(button: HTMLInputElement){
+  buttonClicked(button: HTMLInputElement, payload: Hero){
     if(this.previousButton){
       this.previousButton.setAttribute('class', 'btn btn-default');
     }
     button.setAttribute('class', 'btn btn-primary');
     this.previousButton = button;
+    
+    this._store.dispatch({type: Actions.HERO_TO_ARM_SELECTED.toString(), payload})
   }
 }
