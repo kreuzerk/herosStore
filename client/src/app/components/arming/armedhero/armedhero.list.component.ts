@@ -1,7 +1,7 @@
 import {Actions} from "../../../actions/actions";
 import {ArmedWeaponComponent} from "./armedherorow/armedweapon.component";
-import {Observable} from "rxjs/Observable";
 import {ArmedHeroComponent} from "./armedherorow/armedhero.component";
+import {Observable} from "rxjs/Observable";
 import {ArmedHero} from "../../../model/armedHero.model";
 import {HeroStore} from "../../../model/hero.store";
 import {Store} from "@ngrx/store";
@@ -17,8 +17,8 @@ import {Component} from '@angular/core';
         <th></th>
       </tr>
       <tr *ngFor="let armedhero of armedHeroes | async">
-        <td><armedhero [heroid]="armedhero.heroId"></armedhero></td>
-        <td><armedweapon [weaponId]="armedhero.weaponId"></armedweapon></td>
+        <td><armedhero [heroid]="armedhero.heroId" (onHeroDeleted)="deleteArmedHero(armedhero.id)"></armedhero></td>
+        <td><armedweapon [weaponId]="armedhero.weaponId" (onWeaponDeleted)="deleteArmedHero(armedhero.id)"></armedweapon></td>
         <td><span class="glyphicon glyphicon-trash" (click)="deleteArmedHero(armedhero.id)" aria-hidden="true"></span></td>
       </tr>
     </table>
