@@ -34,9 +34,9 @@ export class HeroButtons{
     if(this.previousButton){
       this.previousButton.setAttribute('class', 'btn btn-default');
     }
-    button.setAttribute('class', 'btn btn-primary');
+    button.setAttribute('class', 'btn btn-danger');
     this.previousButton = button;
-    
+
     this._store.dispatch({type: Actions.HERO_TO_ARM_SELECTED.toString(), payload})
   }
 }

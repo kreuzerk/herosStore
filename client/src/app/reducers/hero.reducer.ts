@@ -1,3 +1,4 @@
+import {Actions} from "../actions/actions";
 import {HeroForm} from "../components/hero/create-hero/hero-form/hero.form.component";
 import {Hero} from "../model/hero.model";
 
@@ -15,11 +16,11 @@ const allTimeHeroes = [
 
 export const heroes = (state: Hero[] = allTimeHeroes, {type, payload}) => {
   switch (type) {
-    case 'ADD_HERO':
+    case Actions.ADD_HERO.toString():
       return [...state, payload];
-    case 'DELETE_HERO':
+    case Actions.DELETE_HERO.toString():
       return state.filter(hero => hero.id != payload);
-    case 'UPDATE_HERO':
+    case Actions.UPDATE_HERO.toString():
       return state.map((hero) => {
         return hero.id === payload.id ? Object.assign({}, hero, payload) : hero;
       });
