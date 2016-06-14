@@ -1,5 +1,5 @@
 import {WeaponFormComponent} from "../components/weapons/create-weapon/weapon-form/weapon-form.component";
-import {WeaponActions} from "../actions/weapon.actions";
+import {Actions} from "../actions/actions";
 import {Weapon} from "../model/weapon";
 
 let createWeapon = (name: string, type: string): Weapon => ({
@@ -16,11 +16,12 @@ let defaultWeapons = [
 
 export const weapons = (state: Array<Weapon> = defaultWeapons, {type, payload}) => {
     switch(type){
-      case WeaponActions.ADD_WEAPON.toString():
+      case Actions.ADD_WEAPON.toString():
+        console.log('Hiere');
         return [...state, payload];
-      case WeaponActions.DELETE_WEAPON.toString():
+      case Actions.DELETE_WEAPON.toString():
         return state.filter(weapon => weapon.id !== payload);
-      case WeaponActions.UPDATE_WEAPON.toString():
+      case Actions.UPDATE_WEAPON.toString():
       return state.map((weapon) => {
         return weapon.id === payload.id ? Object.assign({}, weapon, payload) : weapon;
       });
