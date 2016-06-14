@@ -1,3 +1,5 @@
+import {Actions} from "../../actions/actions";
+import {ArmedHero} from "../../model/armedHero.model";
 import {ArmedHeroList} from "./armedhero/armedhero.list.component";
 import {Weapon} from "../../model/weapon";
 import {WeaponButtons} from "./weaponbuttons/weaponbuttons.component";
@@ -55,6 +57,10 @@ export class ArmingComponent{
   }
 
   addArmedHero(): void{
-    console.log(`Hero ${this.hero.heroName} is going to be armed with ${this.weapon.weaponName}`);
+    let payload = {
+      heroId: this.hero.id,
+      weaponId: this.weapon.id
+    }
+    this._store.dispatch({type: Actions.ADD_ARMED_HERO.toString(), payload})
   }
 }
