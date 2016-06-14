@@ -45,6 +45,7 @@ export class ArmingComponent{
 
   private hero: Hero;
   private weapon: Weapon;
+  private static counter: number = 0;
 
   constructor(private _store: Store<HeroStore>){
     this._store.select('heroToArm').subscribe((hero: Hero) => {
@@ -58,6 +59,7 @@ export class ArmingComponent{
 
   addArmedHero(): void{
     let payload = {
+      id: ArmingComponent.counter++,
       heroId: this.hero.id,
       weaponId: this.weapon.id
     }

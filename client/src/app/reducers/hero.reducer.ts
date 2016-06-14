@@ -9,7 +9,7 @@ let createHero = (name: string, skill: string) => ({
 
 const allTimeHeroes = [
   createHero('Batman', 'Driving'),
-  createHero('SpiderMan', 'Jumping'),
+  createHero('Darkwing Duck', 'Appear from nowhere'),
   createHero('Flash', 'Running')
 ]
 
